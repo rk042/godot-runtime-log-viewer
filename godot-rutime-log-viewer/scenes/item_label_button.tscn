@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://c83dxis067vr0"]
+
+[ext_resource type="Script" uid="uid://di0ltos4j7woq" path="res://godot-rutime-log-viewer/scripts/item_label_button.gd" id="1_nbas4"]
+
+[node name="item_label_button" type="RichTextLabel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Godot Engine v4.5.1.stable.official.f62fdbde1"
+fit_content = true
+scroll_active = false
+script = ExtResource("1_nbas4")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0.49803922)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
