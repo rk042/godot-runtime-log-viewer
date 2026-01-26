@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://ocev1kyuy4ss"]
+
+[node name="log_viewer_canvas_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="background_panel" type="Panel" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.4745098)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="top_menu" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/top_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="button_clean" type="Button" parent="VBoxContainer/top_menu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Clean"
+
+[node name="button_settings" type="Button" parent="VBoxContainer/top_menu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Settings"
+
+[node name="button_close" type="Button" parent="VBoxContainer/top_menu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Close"
+
+[node name="bottom_menu" type="Panel" parent="VBoxContainer"]
+modulate = Color(13.727448, 8.800997, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.9

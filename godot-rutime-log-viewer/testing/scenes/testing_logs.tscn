@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bikxllx6h2nmo"]
+
+[ext_resource type="Script" uid="uid://b6mtfhdnxhrbr" path="res://godot-rutime-log-viewer/scripts/log_handler.gd" id="1_vbxg4"]
+[ext_resource type="Script" uid="uid://cg3rrl0dalojs" path="res://godot-rutime-log-viewer/testing/scripts/test_log2.gd" id="2_bwbdg"]
+
+[node name="TestingLogs" type="Node2D"]
+script = ExtResource("1_vbxg4")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("2_bwbdg")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label2" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
