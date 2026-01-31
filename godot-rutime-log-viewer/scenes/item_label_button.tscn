@@ -9,9 +9,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-text = "Godot Engine v4.5.1.stable.official.f62fdbde1"
+theme_override_font_sizes/normal_font_size = 50
+text = "Anyone else seeing a URL load before Google search?"
 fit_content = true
 scroll_active = false
+vertical_alignment = 1
 script = ExtResource("1_nbas4")
 
 [node name="Button" type="Button" parent="."]
