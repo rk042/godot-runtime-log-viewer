@@ -21,11 +21,10 @@ LogRouter="*res://godot-rutime-log-viewer/scripts/log_router.gd"
 
 [display]
 
-window/size/viewport_width=1206
-window/size/viewport_height=2622
+window/size/viewport_width=603
+window/size/viewport_height=1311
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-window/handheld/orientation=1
 
 [rendering]
 

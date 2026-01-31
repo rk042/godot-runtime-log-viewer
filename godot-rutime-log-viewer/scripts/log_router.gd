@@ -2,9 +2,9 @@
 extends Node
 
 signal log_message(message: String, is_error: bool)
-signal log_error(data: Dictionary)
+signal log_error(message: String)
 
-class CustomLogger extends Logger:
+class log_router extends Logger:
 	var _mutex := Mutex.new()
 	var _queue: Array = []
 
@@ -39,10 +39,10 @@ class CustomLogger extends Logger:
 		_mutex.unlock()
 		return items
 
-var _logger: CustomLogger
+var _logger: log_router
 
 func _init() -> void:
-	_logger = CustomLogger.new()
+	_logger = log_router.new()
 	OS.add_logger(_logger)
 
 func _process(_delta: float) -> void:
@@ -50,4 +50,34 @@ func _process(_delta: float) -> void:
 		if item.type == "message":
 			emit_signal("log_message", item.message, item.is_error)
 		else:
-			emit_signal("log_error", item)
+			var msg: String = str(item.get("rationale", ""))
+			if msg == "":
+				msg = str(item.get("code", ""))
+
+			var time_str := _format_time(int(item.get("time_ms", 0)))
+			var header := "E %s   %s: %s" % [time_str, item.get("function", ""), msg]
+			var source := "<GDScript Source>%s:%d @ %s" % [
+				item.get("file", ""),
+				int(item.get("line", 0)),
+				item.get("function", "")
+			]
+
+			var trace := ""
+			var traces: Array = item.get("script_backtraces", [])
+			for bt in traces:
+				if bt is ScriptBacktrace and bt.get_language_name() == "GDScript":
+					var formatted: String = bt.format(0, 0).strip_edges()
+					if formatted != "":
+						trace = "<Stack Trace> " + formatted.replace("\n", "\n<Stack Trace> ")
+				break
+			var output_string = header + "\n" + source + "\n" + trace + "\n"
+			emit_signal("log_error", output_string)
+			
+func _format_time(ms: int) -> String:
+	var ms_part = ms % 1000
+	var total_sec = ms / 1000
+	var sec = total_sec % 60
+	var total_min = total_sec / 60
+	var min = total_min % 60
+	var hours = total_min / 60
+	return "%d:%02d:%02d:%03d" % [hours, min, sec, ms_part]
