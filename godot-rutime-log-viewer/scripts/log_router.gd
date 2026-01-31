@@ -3,6 +3,7 @@ extends Node
 
 signal log_message(message: String, is_error: bool)
 signal log_error(message: String)
+signal log_display(has_drawn: bool)
 
 class log_router extends Logger:
 	var _mutex := Mutex.new()
@@ -39,6 +40,16 @@ class log_router extends Logger:
 		_mutex.unlock()
 		return items
 
+var num_of_circle_to_show: int = 1
+var min_point_distance: float = 10.0
+
+var gesture_detector: Array[Vector2] = []
+var gesture_count: int = 0
+
+var active_touch_id: int = -1
+var is_mouse_drawing: bool = false
+
+var waiting_for_release: bool = false 
 var _logger: log_router
 
 func _init() -> void:
@@ -72,7 +83,10 @@ func _process(_delta: float) -> void:
 				break
 			var output_string = header + "\n" + source + "\n" + trace + "\n"
 			emit_signal("log_error", output_string)
-			
+	if is_gesture_done():
+		log_display.emit(true)
+		pass
+				
 func _format_time(ms: int) -> String:
 	var ms_part = ms % 1000
 	var total_sec = ms / 1000
@@ -81,3 +95,83 @@ func _format_time(ms: int) -> String:
 	var min = total_min % 60
 	var hours = total_min / 60
 	return "%d:%02d:%02d:%03d" % [hours, min, sec, ms_part]
+
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	# --- Touch ---
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			active_touch_id = event.index
+			waiting_for_release = false
+			gesture_detector.clear()
+			gesture_detector.append(event.position)
+		else:
+			if event.index == active_touch_id:
+				gesture_detector.clear()
+				active_touch_id = -1
+				waiting_for_release = false
+
+	elif event is InputEventScreenDrag:
+		if event.index == active_touch_id:
+			if waiting_for_release:
+				return
+			var p = event.position
+			if gesture_detector.is_empty() or (p - gesture_detector[-1]).length() > min_point_distance:
+				gesture_detector.append(p)
+
+	# --- Mouse (desktop testing) ---
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			is_mouse_drawing = true
+			waiting_for_release = false
+			gesture_detector.clear()
+			gesture_detector.append(event.position)
+		else:
+			is_mouse_drawing = false
+			gesture_detector.clear()
+			waiting_for_release = false
+
+	elif event is InputEventMouseMotion and is_mouse_drawing:
+		if waiting_for_release:
+			return
+		var p2 = event.position
+		if gesture_detector.is_empty() or (p2 - gesture_detector[-1]).length() > min_point_distance:
+			gesture_detector.append(p2)
+
+func is_gesture_done() -> bool:
+	if waiting_for_release:
+		return false
+
+	if gesture_detector.size() < 10:
+		return false
+
+	var gesture_sum := Vector2.ZERO
+	var gesture_length := 0.0
+	var prev_delta := Vector2.ZERO
+
+	for i in range(gesture_detector.size() - 2):
+		var delta := gesture_detector[i + 1] - gesture_detector[i]
+		gesture_sum += delta
+		gesture_length += delta.length()
+
+		if delta.dot(prev_delta) < 0.0:
+			gesture_detector.clear()
+			gesture_count = 0
+			return false
+
+		prev_delta = delta
+
+	var rect := get_viewport().get_visible_rect().size
+	var gesture_base := (rect.x + rect.y) / 4.0
+
+	if gesture_length > gesture_base and gesture_sum.length() < (gesture_base / 2.0):
+		gesture_detector.clear()
+		gesture_count += 1
+
+		if gesture_count >= num_of_circle_to_show:
+			gesture_count = 0
+			waiting_for_release = true 
+			return true
+
+	return false

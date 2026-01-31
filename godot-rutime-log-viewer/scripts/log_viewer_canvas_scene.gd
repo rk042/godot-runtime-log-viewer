@@ -7,8 +7,10 @@ extends Control
 @onready var button_close: Button = $VBoxContainer/top_menu/HBoxContainer/button_close
 
 func _ready() -> void:
+	self.visible = false
 	LogRouter.log_message.connect(_on_log_message)
 	LogRouter.log_error.connect(_on_log_error)
+	LogRouter.log_display.connect(_on_log_display)
 	
 	button_clean.pressed.connect(_clean_button_pressed)
 	button_settings.pressed.connect(_settings_button_pressed)
@@ -16,6 +18,10 @@ func _ready() -> void:
 	
 	for i in range(100):
 		print("testing message",i)
+
+func _on_log_display(has_drawn:bool) ->void:
+	self.visible=true
+	pass
 
 func _close_button_pressed() -> void:
 	self.visible = false
