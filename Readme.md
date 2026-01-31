@@ -1,6 +1,10 @@
 ﻿# Godot Runtime Log Viewer
 
-A small in-game log viewer for Godot 4 that captures engine log output at runtime and renders it in a UI panel. It is designed for mobile and desktop and can be opened with a simple gesture.
+A small in-game log viewer for Godot 4 that captures engine log output at runtime and renders it in a UI panel. It is designed for mobile and desktop and can be opened with a simple gesture. 
+
+Inspired by [aliessmael/Unity-Logs-Viewer](https://github.com/aliessmael/Unity-Logs-Viewer/tree/master)
+
+https://github.com/user-attachments/assets/39325dca-80f7-4624-8248-0fd63843d84a
 
 ## Features
 - Captures log output via a custom `Logger` and forwards it to the UI.
