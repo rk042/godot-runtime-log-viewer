@@ -15,9 +15,8 @@ func _ready() -> void:
 	button_clean.pressed.connect(_clean_button_pressed)
 	button_settings.pressed.connect(_settings_button_pressed)
 	button_close.pressed.connect(_close_button_pressed)
-	
-	for i in range(100):
-		print("testing message",i)
+	pass
+		
 
 func _on_log_display(has_drawn:bool) ->void:
 	self.visible=true
@@ -37,14 +36,14 @@ func _settings_button_pressed() -> void:
 func _on_log_message(message: String, is_error: bool) -> void:
 	var _item:item_lable_button = item.instantiate()
 	v_box_container.add_child(_item)
-	_item.set_text_in_lable(message)
+	_item.set_text_in_lable(message,false)
 	_item.button_click.connect(_item_button_click)
 	pass
 
 func _on_log_error(data: String) -> void:
 	var _item:item_lable_button = item.instantiate()
 	v_box_container.add_child(_item)
-	_item.set_text_in_lable(data)
+	_item.set_text_in_lable(data,true)
 	_item.button_click.connect(_item_button_click)
 	pass
 

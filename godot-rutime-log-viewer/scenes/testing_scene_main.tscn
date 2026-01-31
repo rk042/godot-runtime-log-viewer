@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://y3hkylhsvitk"]
-
-[ext_resource type="PackedScene" uid="uid://ocev1kyuy4ss" path="res://godot-rutime-log-viewer/scenes/log_viewer_canvas_scene.tscn" id="1_kf6ux"]
-
-[node name="testing_scene_main" type="Node2D"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="log_viewer_canvas_scene" parent="CanvasLayer" instance=ExtResource("1_kf6ux")]

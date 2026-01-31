@@ -10,7 +10,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 50
-text = "Anyone else seeing a URL load before Google search?"
+text = "If you are seeing this message that mean we have issue with code. please raise an issue.
+
+Godot Runtime Log Viewer By github.com/rk042/godot-runtime-log-viewer
+"
 fit_content = true
 scroll_active = false
 vertical_alignment = 1

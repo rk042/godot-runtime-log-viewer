@@ -11,7 +11,10 @@ func _ready() -> void:
 	button.pressed.connect(_on_button_pressed)
 	pass
 
-func set_text_in_lable(value:String) -> void:
+func set_text_in_lable(value:String, is_error:bool) -> void:
+	if is_error:
+		label.modulate = Color.RED
+		pass
 	label.text = value
 	pass
 
