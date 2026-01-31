@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="godot-runtime-log-viewer"
-run/main_scene="uid://bikxllx6h2nmo"
+run/main_scene="uid://ocev1kyuy4ss"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,8 +23,10 @@ LogRouter="*res://godot-rutime-log-viewer/scripts/log_router.gd"
 
 window/size/viewport_width=301
 window/size/viewport_height=655
+window/handheld/orientation=1
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

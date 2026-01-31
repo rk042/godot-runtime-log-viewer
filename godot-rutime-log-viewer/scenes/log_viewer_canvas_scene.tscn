@@ -12,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("1_67csl")
 item = ExtResource("2_i1a0n")
 
@@ -39,6 +40,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
+mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/top_menu"]
 layout_mode = 1
@@ -70,6 +72,7 @@ modulate = Color(13.727448, 8.800997, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.9
+mouse_filter = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/bottom_menu"]
 layout_mode = 1
