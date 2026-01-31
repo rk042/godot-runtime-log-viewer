@@ -17,7 +17,6 @@ script = ExtResource("1_67csl")
 item = ExtResource("2_i1a0n")
 
 [node name="background_panel" type="Panel" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.4745098)
 layout_mode = 1
 anchors_preset = 15
@@ -69,7 +68,8 @@ theme_override_font_sizes/font_size = 40
 text = "Close"
 
 [node name="bottom_menu" type="Panel" parent="VBoxContainer"]
-modulate = Color(13.727448, 8.800997, 0, 1)
+modulate = Color(1, 1, 1, 0.5058824)
+self_modulate = Color(1, 1, 1, 0.4627451)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.9
