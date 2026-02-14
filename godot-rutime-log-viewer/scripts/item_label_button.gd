@@ -5,6 +5,8 @@ extends Node
 @onready var label:RichTextLabel = $"."
 @onready var button: Button = $Button
 
+var _is_error:bool = false
+
 signal button_click
 
 func _ready() -> void:
@@ -14,8 +16,12 @@ func _ready() -> void:
 func set_text_in_lable(value:String, is_error:bool) -> void:
 	if is_error:
 		label.modulate = Color.RED
+		_is_error = true
 		pass
-	label.text = value
+		
+	if not is_error:
+		label.text = value
+		_is_error = false
 	pass
 
 func _on_button_pressed() -> void:
