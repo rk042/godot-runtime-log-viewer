@@ -18,9 +18,10 @@ func set_text_in_lable(value:String, is_error:bool) -> void:
 		label.modulate = Color.RED
 		_is_error = true
 		pass
+	
+	label.text = value
 		
 	if not is_error:
-		label.text = value
 		_is_error = false
 	pass
 
