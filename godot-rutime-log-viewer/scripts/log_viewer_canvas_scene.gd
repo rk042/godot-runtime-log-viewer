@@ -24,8 +24,7 @@ func _ready() -> void:
 	button_close.pressed.connect(_close_button_pressed)
 	button_debug.pressed.connect(_log_button_pressed)
 	button_error.pressed.connect(_error_button_pressed)
-	pass
-		
+	pass		
 
 func _log_button_pressed() ->void:
 	for i in items:
@@ -83,6 +82,12 @@ func _settings_button_pressed() -> void:
 	pass	
 	
 func _on_log_message(message: String, is_error: bool) -> void:
+	
+	for existing_item in items:
+		if existing_item.get_message() == message:
+			existing_item.increase_count()
+			return  # Already exists, do not add again
+			
 	var _item:item_lable_button = item.instantiate()
 	v_box_container.add_child(_item)
 	_item.set_text_in_lable(message,false)
@@ -96,6 +101,11 @@ func _on_log_message(message: String, is_error: bool) -> void:
 	pass
 
 func _on_log_error(data: String) -> void:
+	for existing_item in items:
+		if existing_item.get_message() == data:
+			existing_item.increase_count()
+			return  # Already exists, do not add again
+	
 	var _item:item_lable_button = item.instantiate()
 	v_box_container.add_child(_item)
 	_item.set_text_in_lable(data,true)
