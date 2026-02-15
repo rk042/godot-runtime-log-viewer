@@ -1,24 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://y3hkylhsvitk"]
+[gd_scene format=3 uid="uid://y3hkylhsvitk"]
 
 [ext_resource type="Script" uid="uid://cg3rrl0dalojs" path="res://godot-rutime-log-viewer/testing/scripts/testing_logs.gd" id="1_v1u20"]
 [ext_resource type="PackedScene" uid="uid://ocev1kyuy4ss" path="res://godot-rutime-log-viewer/scenes/log_viewer_canvas_scene.tscn" id="2_0i4b2"]
 [ext_resource type="Texture2D" uid="uid://ur6ovqg8ech" path="res://icon.svg" id="3_22ww1"]
 
-[node name="testing_scene_main" type="Node2D"]
+[node name="testing_scene_main" type="Node2D" unique_id=1859507721]
 script = ExtResource("1_v1u20")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1484856048]
 
-[node name="log_viewer_canvas_scene" parent="CanvasLayer" instance=ExtResource("2_0i4b2")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(584, 1143)
-scale = Vector2(4.234375, 4.234375)
-texture = ExtResource("3_22ww1")
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2" unique_id=1392551105]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -34,7 +25,7 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer2"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer2" unique_id=137900089]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -48,3 +39,12 @@ text = "Draw circle to display log window"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1707106080]
+
+[node name="log_viewer_canvas_scene" parent="CanvasLayer" unique_id=1678524621 instance=ExtResource("2_0i4b2")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1931118877]
+position = Vector2(584, 1143)
+scale = Vector2(4.234375, 4.234375)
+texture = ExtResource("3_22ww1")

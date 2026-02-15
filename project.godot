@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="godot-runtime-log-viewer"
-run/main_scene="uid://ocev1kyuy4ss"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+run/main_scene="uid://y3hkylhsvitk"
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
