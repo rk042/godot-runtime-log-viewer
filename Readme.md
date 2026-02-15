@@ -4,16 +4,18 @@ A small in-game log viewer for Godot 4 that captures engine log output at runtim
 
 Inspired by [aliessmael/Unity-Logs-Viewer](https://github.com/aliessmael/Unity-Logs-Viewer/tree/master)
 
-https://github.com/user-attachments/assets/39325dca-80f7-4624-8248-0fd63843d84a
+https://github.com/user-attachments/assets/c6b711ec-f89d-4005-9e44-3a14bd4441a2
 
 ## Features
 - Captures log output via a custom `Logger` and forwards it to the UI.
 - Displays both regular messages and error traces.
 - Toggleable log window with a circular gesture (or mouse drag during desktop testing).
+- **Filter view:** toggle between showing **Logs** and **Errors** (view-only filter, nothing is deleted).
+- **Grouped duplicate messages:** repeated logs are merged into a single entry with an increasing **count** (useful for `_process()` spam).
 - Simple UI with clear, settings, and close actions.
 
 ## Requirements
-- Godot 4.x (project config targets 4.5)
+- Godot 4.x (project config targets 4.6)
 
 ## Installation
 1. Copy the `godot-rutime-log-viewer` folder into your project (keep the same folder name).
